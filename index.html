@@ -3,79 +3,217 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SH Blockchain</title>
-<link rel="stylesheet" href="style.css">
+<title>SH Blockchain | Official</title>
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+  scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,0.05);
+  z-index:999;
+}
+
+.logo{
+  font-weight:700;
+  font-size:22px;
+  color:#00ffd5;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:#00ffd5;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:48px;
+}
+
+.typing{
+  color:#00ffd5;
+}
+
+/* GLASS CARD */
+.card{
+  background:rgba(255,255,255,0.07);
+  border-radius:20px;
+  padding:30px;
+  margin:40px auto;
+  width:90%;
+  max-width:900px;
+  backdrop-filter:blur(15px);
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 25px;
+  border-radius:30px;
+  background:#00ffd5;
+  color:black;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:white;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  opacity:.7;
+}
+
+/* SCROLL ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(60px);
+  transition:all .8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:32px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav class="navbar">
-    <div class="logo">🚀 SH Blockchain</div>
-        <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                                <li><a href="#services">Services</a></li>
-                                        <li><a href="#contact">Contact</a></li>
-                                            </ul>
-                                            </nav>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">SH Blockchain</div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-                                            <!-- Hero -->
-                                            <section class="hero">
-                                                <div class="hero-content">
-                                                        <h1>Future of Blockchain Technology</h1>
-                                                                <p>Secure • Fast • Decentralized</p>
-                                                                        <button class="btn">Launch App</button>
-                                                                            </div>
-                                                                            </section>
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>I am <span class="typing"></span></h1>
+    <p>Future of Blockchain & Cyber Technology</p>
+    <a href="#contact" class="btn">Contact Me</a>
+  </div>
+</section>
 
-                                                                            <!-- About -->
-                                                                            <section id="about" class="section">
-                                                                                <h2>About SH Blockchain</h2>
-                                                                                    <p>
-                                                                                            SH Blockchain builds next-generation Web3 and blockchain solutions.
-                                                                                                    We focus on security, scalability, and innovation.
-                                                                                                        </p>
-                                                                                                        </section>
+<!-- ABOUT -->
+<div id="about" class="card reveal">
+  <h2>🚀 About SH Blockchain</h2>
+  <p>
+    Welcome to SH Blockchain official website.  
+    We build modern blockchain solutions, cyber security tools, and next-gen technology systems.
+  </p>
+</div>
 
-                                                                                                        <!-- Services -->
-                                                                                                        <section id="services" class="section">
-                                                                                                            <h2>Our Services</h2>
+<!-- CONTACT -->
+<div id="contact" class="card reveal">
+  <h2>📩 Contact</h2>
+  <p>Email: your@email.com</p>
+  <p>Telegram: @yourusername</p>
+  <a href="#" class="btn">Message Now</a>
+</div>
 
-                                                                                                                <div class="cards">
+<footer>
+  © 2026 SH Blockchain — All Rights Reserved
+</footer>
 
-                                                                                                                        <div class="card">
-                                                                                                                                    <h3>Smart Contracts</h3>
-                                                                                                                                                <p>Secure smart contract development for modern blockchain apps.</p>
-                                                                                                                                                        </div>
+<script>
+// typing effect
+const text = ["SH Blockchain", "Web Developer", "Cyber Enthusiast"];
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
 
-                                                                                                                                                                <div class="card">
-                                                                                                                                                                            <h3>Web3 Development</h3>
-                                                                                                                                                                                        <p>Full Web3 integration with wallets and blockchain networks.</p>
-                                                                                                                                                                                                </div>
+(function type(){
+  if(count === text.length) count = 0;
+  currentText = text[count];
+  letter = currentText.slice(0, ++index);
 
-                                                                                                                                                                                                        <div class="card">
-                                                                                                                                                                                                                    <h3>Crypto Security</h3>
-                                                                                                                                                                                                                                <p>Advanced crypto security and auditing services.</p>
-                                                                                                                                                                                                                                        </div>
+  document.querySelector(".typing").textContent = letter;
 
-                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                            </section>
+  if(letter.length === currentText.length){
+    count++;
+    index = 0;
+    setTimeout(type, 1200);
+  }else{
+    setTimeout(type, 80);
+  }
+})();
 
-                                                                                                                                                                                                                                            <!-- Contact -->
-                                                                                                                                                                                                                                            <section id="contact" class="section">
-                                                                                                                                                                                                                                                <h2>Contact Us</h2>
-                                                                                                                                                                                                                                                    <p>Email: shblockchain@email.com</p>
-                                                                                                                                                                                                                                                        <p>Telegram: @shblockchain</p>
-                                                                                                                                                                                                                                                        </section>
+// scroll reveal
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const visible = 100;
+    if(elementTop < windowHeight - visible){
+      el.classList.add("active");
+    }
+  });
+});
+</script>
 
-                                                                                                                                                                                                                                                        <!-- Footer -->
-                                                                                                                                                                                                                                                        <footer>
-                                                                                                                                                                                                                                                            <p>© 2026 SH Blockchain — All Rights Reserved</p>
-                                                                                                                                                                                                                                                            </footer>
-
-                                                                                                                                                                                                                                                            </body>
-                                                                                                                                                                                                                                                            </html>
+</body>
+</html>
