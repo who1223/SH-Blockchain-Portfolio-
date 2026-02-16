@@ -303,3 +303,182 @@ window.addEventListener("scroll",()=>{
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SH Blockchain | FINAL BOSS NEXT LEVEL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;scroll-behavior:smooth;transition:all .5s;}
+.light-mode{background:#f5f5f5;color:#111;}
+nav{position:fixed;width:100%;top:0;left:0;padding:15px 40px;display:flex;justify-content:space-between;backdrop-filter:blur(12px);background:rgba(255,255,255,0.05);z-index:999;}
+.logo{font-weight:700;font-size:22px;color:#00ffd5;}
+nav ul{list-style:none;display:flex;gap:25px;}
+nav a{color:white;text-decoration:none;transition:.3s;}
+nav a:hover{color:#00ffd5;}
+.menu-toggle{display:none;font-size:28px;cursor:pointer;}
+
+/* HERO */
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;}
+.hero h1{font-size:48px;}
+.typing{color:#00ffd5;}
+
+/* GLASS CARD */
+.card{background:rgba(255,255,255,0.07);border-radius:20px;padding:30px;margin:40px auto;width:90%;max-width:900px;backdrop-filter:blur(15px);transition:.4s;}
+.card:hover{transform:translateY(-8px);}
+.btn{display:inline-block;margin-top:20px;padding:12px 25px;border-radius:30px;background:#00ffd5;color:black;text-decoration:none;font-weight:600;transition:.3s;}
+.btn:hover{background:white;}
+footer{text-align:center;padding:40px;opacity:.7;}
+
+/* SCROLL ANIMATION */
+.reveal{opacity:0;transform:translateY(60px);transition:all .8s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+/* DARK/LIGHT BUTTON */
+#modeToggle{position:fixed;bottom:20px;right:20px;background:#00ffd5;color:black;padding:12px 18px;border:none;border-radius:12px;cursor:pointer;z-index:9999;}
+
+/* MUSIC PLAYER */
+#audioControl{position:fixed;bottom:20px;left:20px;background:#00ffd5;color:black;padding:12px 18px;border:none;border-radius:12px;cursor:pointer;z-index:9999;}
+
+/* CHATBOT DEMO */
+#chatbot{position:fixed;bottom:80px;right:20px;background:rgba(0,0,0,0.8);color:white;padding:15px;border-radius:15px;width:250px;display:none;flex-direction:column;gap:10px;z-index:9999;}
+#chatbot input{padding:8px;border-radius:8px;border:none;}
+#chatbot button{padding:8px;border-radius:8px;border:none;background:#00ffd5;color:black;cursor:pointer;}
+
+/* LOADER */
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#020617;display:flex;align-items:center;justify-content:center;z-index:9999;}
+#loader span{color:#00ffd5;font-size:28px;animation:blink 1s infinite;}
+@keyframes blink{0%,50%,100%{opacity:1}25%,75%{opacity:0}}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader"><span>Loading SH Blockchain...</span></div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">SH Blockchain</div>
+  <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+  <ul id="navMenu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" onclick="toggleChat()">Chatbot</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>I am <span class="typing"></span></h1>
+    <p>Future of Blockchain & Cyber Technology</p>
+    <a href="#contact" class="btn">Contact Me</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div id="about" class="card reveal">
+  <h2>🚀 About SH Blockchain</h2>
+  <p>We build modern blockchain solutions, cyber security tools, and next-gen technology systems.</p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="card reveal">
+  <h2>📩 Contact</h2>
+  <p>Email: your@email.com</p>
+  <p>Telegram: @yourusername</p>
+  <a href="#" class="btn">Message Now</a>
+</div>
+
+<!-- CHATBOT DEMO -->
+<div id="chatbot">
+  <div><strong>Chatbot</strong></div>
+  <input type="text" id="chatInput" placeholder="Type here...">
+  <button onclick="sendMsg()">Send</button>
+  <div id="chatOutput"></div>
+</div>
+
+<!-- BUTTONS -->
+<button id="modeToggle" onclick="toggleMode()">🌙 Mode</button>
+<button id="audioControl" onclick="toggleAudio()">🔊 Music</button>
+<audio id="bgAudio" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<footer>
+  © 2026 SH Blockchain — FINAL BOSS NEXT LEVEL
+</footer>
+
+<script>
+// ===== LOADER =====
+window.addEventListener("load",()=>{setTimeout(()=>{document.getElementById("loader").style.display="none";},1200);});
+
+// ===== TYPING EFFECT =====
+const text=["SH Blockchain","Web Developer","Cyber Enthusiast"];
+let count=0,index=0,currentText="",letter="";
+(function type(){
+  if(count===text.length)count=0;
+  currentText=text[count];
+  letter=currentText.slice(0,++index);
+  document.querySelector(".typing").textContent=letter;
+  if(letter.length===currentText.length){count++;index=0;setTimeout(type,1200);}
+  else setTimeout(type,80);
+})();
+
+// ===== SCROLL REVEAL =====
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    const windowHeight=window.innerHeight;
+    const elementTop=el.getBoundingClientRect().top;
+    const visible=100;
+    if(elementTop<windowHeight-visible){el.classList.add("active");}
+  });
+});
+
+// ===== DARK/LIGHT =====
+function toggleMode(){
+  document.body.classList.toggle("light-mode");
+}
+
+// ===== MUSIC =====
+function toggleAudio(){
+  const audio=document.getElementById("bgAudio");
+  audio.paused?audio.play():audio.pause();
+}
+
+// ===== CHATBOT =====
+function toggleChat(){
+  const chat=document.getElementById("chatbot");
+  chat.style.display=chat.style.display==="flex"?"none":"flex";
+}
+function sendMsg(){
+  const input=document.getElementById("chatInput");
+  const output=document.getElementById("chatOutput");
+  if(input.value!==""){
+    const msg=document.createElement("div");
+    msg.textContent="You: "+input.value;
+    output.appendChild(msg);
+    const botMsg=document.createElement("div");
+    botMsg.textContent="Bot: This is demo reply";
+    output.appendChild(botMsg);
+    input.value="";
+    output.scrollTop=output.scrollHeight;
+  }
+}
+
+// ===== MOBILE MENU =====
+function toggleMenu(){
+  const menu=document.getElementById("navMenu");
+  menu.style.display=menu.style.display==="flex"?"none":"flex";
+}
+</script>
+</body>
+</html>
