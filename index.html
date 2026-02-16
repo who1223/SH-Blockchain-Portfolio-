@@ -1,65 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SH Blockchain</title>
-    <link rel="stylesheet" href="style.css">
+    <title>আমার ওয়েবসাইট</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
+        form { background: #fff; padding: 20px; border-radius: 10px; width: 300px; }
+        input, textarea { width: 100%; margin-bottom: 10px; padding: 8px; }
+        .post { background: #fff; padding: 10px; margin: 10px 0; border-radius: 8px; }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <img src="logo.png" alt="SH Blockchain Logo" class="logo">
-        <h1>SH Blockchain</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <h2>নতুন পোস্ট করুন</h2>
+    <form action="submit.php" method="POST" enctype="multipart/form-data">
+        নাম: <input type="text" name="name" required><br>
+        বার্তা: <textarea name="message" rows="4" required></textarea><br>
+        ফাইল আপলোড: <input type="file" name="file"><br>
+        <input type="submit" value="পোস্ট করুন">
+    </form>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Building the Future of Blockchain</h2>
-        <p>Innovative blockchain solutions for businesses and developers.</p>
-        <a href="#contact" class="btn">Get in Touch</a>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About SH Blockchain</h2>
-        <p>SH Blockchain is a cutting-edge startup focused on smart contracts, decentralized applications (DApps), and cryptocurrency solutions. We aim to make blockchain accessible and secure for everyone.</p>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-list">
-            <div class="service">
-                <h3>Smart Contract Development</h3>
-                <p>We build secure and efficient smart contracts for Ethereum, Binance Smart Chain, and more.</p>
-            </div>
-            <div class="service">
-                <h3>Cryptocurrency Solutions</h3>
-                <p>Token creation, wallet integration, and crypto transaction solutions tailored to your business.</p>
-            </div>
-            <div class="service">
-                <h3>Decentralized Applications (DApps)</h3>
-                <p>Development of interactive and secure DApps to leverage blockchain technology effectively.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <p>Email: info@shblockchain.com</p>
-        <p>Telegram: <a href="https://t.me/Sha_Blockchain" target="_blank">t.me/Sha_Blockchain</a></p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 SH Blockchain. All rights reserved.</p>
-    </footer>
+    <h2>সর্বশেষ পোস্ট</h2>
+    <?php
+    if(file_exists("posts.txt")){
+        $posts = file("posts.txt");
+        $posts = array_reverse($posts);
+        foreach($posts as $post){
+            $data = explode("||", $post);
+            echo '<div class="post">';
+            echo "<b>নাম:</b> ".htmlspecialchars($data[0])."<br>";
+            echo "<b>বার্তা:</b> ".htmlspecialchars($data[1])."<br>";
+            if(!empty($data[2])) echo "<b>ফাইল:</b> <a href='uploads/".htmlspecialchars($data[2])."' target='_blank'>".htmlspecialchars($data[2])."</a>";
+            echo "</div>";
+        }
+    }
+    ?>
 </body>
 </html>
