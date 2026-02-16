@@ -1,38 +1,81 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>আমার ওয়েবসাইট</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
-        form { background: #fff; padding: 20px; border-radius: 10px; width: 300px; }
-        input, textarea { width: 100%; margin-bottom: 10px; padding: 8px; }
-        .post { background: #fff; padding: 10px; margin: 10px 0; border-radius: 8px; }
-    </style>
-</head>
-<body>
-    <h2>নতুন পোস্ট করুন</h2>
-    <form action="submit.php" method="POST" enctype="multipart/form-data">
-        নাম: <input type="text" name="name" required><br>
-        বার্তা: <textarea name="message" rows="4" required></textarea><br>
-        ফাইল আপলোড: <input type="file" name="file"><br>
-        <input type="submit" value="পোস্ট করুন">
-    </form>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SH Blockchain</title>
+<link rel="stylesheet" href="style.css">
 
-    <h2>সর্বশেষ পোস্ট</h2>
-    <?php
-    if(file_exists("posts.txt")){
-        $posts = file("posts.txt");
-        $posts = array_reverse($posts);
-        foreach($posts as $post){
-            $data = explode("||", $post);
-            echo '<div class="post">';
-            echo "<b>নাম:</b> ".htmlspecialchars($data[0])."<br>";
-            echo "<b>বার্তা:</b> ".htmlspecialchars($data[1])."<br>";
-            if(!empty($data[2])) echo "<b>ফাইল:</b> <a href='uploads/".htmlspecialchars($data[2])."' target='_blank'>".htmlspecialchars($data[2])."</a>";
-            echo "</div>";
-        }
-    }
-    ?>
-</body>
-</html>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">🚀 SH Blockchain</div>
+        <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                                <li><a href="#services">Services</a></li>
+                                        <li><a href="#contact">Contact</a></li>
+                                            </ul>
+                                            </nav>
+
+                                            <!-- Hero -->
+                                            <section class="hero">
+                                                <div class="hero-content">
+                                                        <h1>Future of Blockchain Technology</h1>
+                                                                <p>Secure • Fast • Decentralized</p>
+                                                                        <button class="btn">Launch App</button>
+                                                                            </div>
+                                                                            </section>
+
+                                                                            <!-- About -->
+                                                                            <section id="about" class="section">
+                                                                                <h2>About SH Blockchain</h2>
+                                                                                    <p>
+                                                                                            SH Blockchain builds next-generation Web3 and blockchain solutions.
+                                                                                                    We focus on security, scalability, and innovation.
+                                                                                                        </p>
+                                                                                                        </section>
+
+                                                                                                        <!-- Services -->
+                                                                                                        <section id="services" class="section">
+                                                                                                            <h2>Our Services</h2>
+
+                                                                                                                <div class="cards">
+
+                                                                                                                        <div class="card">
+                                                                                                                                    <h3>Smart Contracts</h3>
+                                                                                                                                                <p>Secure smart contract development for modern blockchain apps.</p>
+                                                                                                                                                        </div>
+
+                                                                                                                                                                <div class="card">
+                                                                                                                                                                            <h3>Web3 Development</h3>
+                                                                                                                                                                                        <p>Full Web3 integration with wallets and blockchain networks.</p>
+                                                                                                                                                                                                </div>
+
+                                                                                                                                                                                                        <div class="card">
+                                                                                                                                                                                                                    <h3>Crypto Security</h3>
+                                                                                                                                                                                                                                <p>Advanced crypto security and auditing services.</p>
+                                                                                                                                                                                                                                        </div>
+
+                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                            </section>
+
+                                                                                                                                                                                                                                            <!-- Contact -->
+                                                                                                                                                                                                                                            <section id="contact" class="section">
+                                                                                                                                                                                                                                                <h2>Contact Us</h2>
+                                                                                                                                                                                                                                                    <p>Email: shblockchain@email.com</p>
+                                                                                                                                                                                                                                                        <p>Telegram: @shblockchain</p>
+                                                                                                                                                                                                                                                        </section>
+
+                                                                                                                                                                                                                                                        <!-- Footer -->
+                                                                                                                                                                                                                                                        <footer>
+                                                                                                                                                                                                                                                            <p>© 2026 SH Blockchain — All Rights Reserved</p>
+                                                                                                                                                                                                                                                            </footer>
+
+                                                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                                                            </html>
